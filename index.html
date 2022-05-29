@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbutveckling Uppgift</title>
+</head>
+<body style="margin: 10% 35%; background-color: wheat;" >
+    
+<h2>Inlämningsuppgift</h2>
+<p>En formulär som producerar en array och beräknar talens summan:</p>
+
+<form id="formen" >
+  1: <input type="text" id="falt0" name="falt0" ><br>
+  2: <input type="text" id="falt1" name="falt1" ><br>
+  3: <input type="text" id="falt2" name="falt2" ><br>
+  4: <input type="text" id="falt3" name="falt3" ><br>
+  5: <input type="text" id="falt4" name="falt4" ><br>
+  <br><hr><br>
+  <button type="button" onclick="showFunction()">Mata in värden i arrayen</button> <br> <br>
+  <button type="button" onclick="addFunction()">Addera talen och visa summan</button>
+</form> 
+
+
+
+<p id="textArea"></p>
+
+<script>
+const x = [5];
+
+    function showFunction()
+    {
+const x = document.forms["formen"];
+
+let text = "<p>Här är värderna som matas in i arrayen:</p>";
+for (let i = 0; i < x.length ;i++) {
+  text += x.elements[i].value + "<br>";
+}
+document.getElementById("textArea").innerHTML = text;
+}
+
+
+function addFunction()
+{
+  
+  //Fångar värden i textboxerna i en array: 
+  const varden = [];
+
+  varden[0] = parseInt(document.getElementById("falt0").value);
+  varden[1] = parseInt(document.getElementById("falt1").value);
+  varden[2] = parseInt(document.getElementById("falt2").value);
+  varden[3] = parseInt(document.getElementById("falt3").value);
+  varden[4] = parseInt(document.getElementById("falt4").value);
+
+
+//Loopar arayen och adderar talen:
+let summan = 0;
+for (let i = 0; i < varden.length ;i++) 
+{
+  summan += varden[i];
+}
+
+//sorterar talen i arrayen:
+varden.sort(function(a, b){return a-b});
+
+let talenS = "<br><br>Talen som adderas (sorterade) är:<br>";
+
+for (let i= 0; i < varden.length; i++ )
+{
+  talenS += varden[i] + "<br>";
+}
+
+
+document.getElementById("textArea").innerHTML = "<br>Summan blir: " + summan + talenS ;
+
+}
+
+</script>
+
+</body>
+</html>
